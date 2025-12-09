@@ -23,16 +23,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /app
 
-# Copy composer files
-COPY composer.json composer.lock* ./
-
-# Install dependencies
-RUN composer install --no-interaction --no-scripts --prefer-dist --no-dev || \
-    composer install --no-interaction --no-scripts --prefer-dist
-
-# Copy application files
-COPY . .
-
 # Expose port (default 8000, can be overridden via env)
 EXPOSE 8000
 
