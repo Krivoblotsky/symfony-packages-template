@@ -8,6 +8,8 @@ RUN apk add --no-cache \
     libzip-dev \
     zip \
     unzip \
+    bash \
+    make \
     oniguruma-dev
 
 # Install PHP extensions
