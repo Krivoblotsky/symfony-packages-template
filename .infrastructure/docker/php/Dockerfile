@@ -1,19 +1,18 @@
 FROM php:8.3-cli-alpine
 
+ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+
 # Install system dependencies
 RUN apk add --no-cache \
     git \
     curl \
-    libpng-dev \
-    libzip-dev \
     zip \
     unzip \
     bash \
-    make \
-    oniguruma-dev
+    make
 
 # Install PHP extensions
-RUN docker-php-ext-install \
+RUN install-php-extensions \
     mbstring \
     zip \
     pdo_mysql \
