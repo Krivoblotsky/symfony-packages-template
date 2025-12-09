@@ -82,7 +82,7 @@ if [[ -n "$NEW_DESCRIPTION" ]]; then
 fi
 
 read -r -p "Proceed with the update? [y/N] " confirm
-confirm=${confirm,,}
+confirm=$(printf '%s' "$confirm" | tr '[:upper:]' '[:lower:]')
 if [[ "$confirm" != "y" && "$confirm" != "yes" ]]; then
   echo "Aborted."
   exit 1
